@@ -1,14 +1,22 @@
 package owner.config;
 
-public class WebDriverConfig {
+import java.util.Objects;
 
-    public Browser getBrowser() {
-        String browser = System.getProperty("browser");
-        return Browser.valueOf(browser);
-        //return Browser.FIREFOX;
-    }
+public class WebDriverConfig {
 
     public String getBaseUrl() {
         return "https://github.com";
     }
+
+    public Browser getBrowser() {
+        String browser = System.getProperty("browser");
+        System.out.println(browser);
+        if (Objects.isNull(browser)) {
+            browser = "CHROME";
+        }
+        return Browser.valueOf(browser);
+        //return Browser.FIREFOX;
+    }
+
+
 }

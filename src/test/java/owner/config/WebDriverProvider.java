@@ -15,6 +15,13 @@ public class WebDriverProvider implements Supplier<WebDriver> {
         this.config = new WebDriverConfig();
     }
 
+    @Override
+    public WebDriver get() {
+        WebDriver driver = createWebDriver();
+        driver.get(config.getBaseUrl());
+        return driver;
+    }
+
     private WebDriver createWebDriver() {
         if (config.getBrowser().equals(Browser.CHROME)) {
             WebDriverManager.chromedriver().setup();
@@ -27,11 +34,6 @@ public class WebDriverProvider implements Supplier<WebDriver> {
         throw new RuntimeException("No such browser");
     }
 
-    @Override
-    public WebDriver get() {
-        WebDriver driver = createWebDriver();
-        driver.get(config.getBaseUrl());
-        return driver;
-    }
+
 
 }

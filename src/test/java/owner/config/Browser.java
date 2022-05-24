@@ -2,5 +2,6 @@ package owner.config;
 
 public enum Browser {
     CHROME,
-    FIREFOX
+    FIREFOX,
+    EXCEPTION_TEST
 }

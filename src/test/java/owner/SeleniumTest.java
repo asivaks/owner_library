@@ -19,6 +19,8 @@ public class SeleniumTest {
         /*
         //Chrome Driver setup, fixes incompatibilities of Chrome and chromedriver
         //Selenide does it automatically
+
+        //moved to WebDriverProvider
         WebDriverManager.chromedriver().setup();
 
         WebDriver driver = new ChromeDriver();
@@ -28,7 +30,6 @@ public class SeleniumTest {
 
         String title = driver.getTitle();
         assertEquals("GitHub: Where the world builds software · GitHub", title);
-        driver.quit();
     }
 
     @AfterEach
