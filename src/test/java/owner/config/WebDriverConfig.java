@@ -10,7 +10,7 @@ public class WebDriverConfig {
 
     public Browser getBrowser() {
         String browser = System.getProperty("browser");
-        System.out.println(browser);
+        System.out.println("Browser set to " + browser);
         if (Objects.isNull(browser)) {
             browser = "CHROME";
         }
