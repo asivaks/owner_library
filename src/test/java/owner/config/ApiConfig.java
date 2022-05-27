@@ -3,8 +3,7 @@ package owner.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:api.properties", //try to read, if not successful go to the following line
-//        "classpath:auth.properties"
+        "classpath:api.properties"
 })
 
 public interface ApiConfig extends Config {

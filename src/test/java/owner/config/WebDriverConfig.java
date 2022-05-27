@@ -4,18 +4,39 @@ import org.aeonbits.owner.Config;
 
 import java.net.URL;
 
+@Config.Sources({
+        "classpath:credentials.properties", //try to read, if not successful go to the following line
+//        "classpath:auth.properties"
+})
+
 public interface WebDriverConfig extends Config {
 
     //gets from system properties keys and transforms them into
     @Key("baseUrl")
     @DefaultValue("https://github.com")
-    String getBaseUrl();
+    String baseUrl();
 
     @Key("browser")
     @DefaultValue("CHROME")
-    Browser getBrowser();
+    String browser();
+
+    @Key("browserVersion")
+    @DefaultValue("")
+    String browserVersion();
+
+    @Key("useRemote")
+    @DefaultValue("")
+    String useRemote();
+
+    @Key("remoteUser")
+    @DefaultValue("")
+    String remoteUser();
+
+    @Key("remotePassword")
+    @DefaultValue("")
+    String remotePassword();
 
     @Key("remoteUrl")
     @DefaultValue("")
-    URL getRemoteUrl();
+    String remoteUrl();
 }
