@@ -13,7 +13,10 @@ dependencies {
     testImplementation (
             'org.junit.jupiter:junit-jupiter-api:5.8.2',
             'org.seleniumhq.selenium:selenium-java:4.1.4',
-            'io.github.bonigarcia:webdrivermanager:5.1.1' //automated driver management, fixes incompatibilities of Chrome and chromedriver
+            'io.github.bonigarcia:webdrivermanager:5.1.1', //automated driver management, fixes incompatibilities of Chrome and chromedriver
+            "org.aeonbits.owner:owner:1.0.12",
+            "org.assertj:assertj-core:3.22.0",
+            'com.google.code.gson:gson:2.9.0'  //parse JSONs
     )
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
@@ -21,4 +24,28 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())  //get properties from console
+    testLogging {
+        showStandardStreams = true  //turn on gradle console output
+    }
 }
+
+
+task apiTest(type: Test) {
+    useJUnitPlatform {
+        includeTags "apiTest"
+    }
+
+    systemProperties(System.getProperties())  //get properties from console
+    testLogging {
+        showStandardStreams = true  //turn on gradle console output
+    }
+
+    //add detailed info about passed & failed tests
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
